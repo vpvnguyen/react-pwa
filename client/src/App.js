@@ -12,6 +12,7 @@ const App = () => {
     if (e.key === "Enter") {
       const data = await fetchWeather(query);
 
+      console.log(query);
       console.log(data);
       setWeather(data);
 
@@ -22,6 +23,7 @@ const App = () => {
 
   return (
     <div className="main-container">
+      <h3 className="search-header">Enter a city</h3>
       <input
         type="text"
         className="search"
@@ -53,6 +55,13 @@ const App = () => {
             />
             {/* description of weather */}
             <p>{weather.weather[0].description}</p>
+            <p>
+              <strong>Wind</strong>{" "}
+              <span>
+                {weather.wind.deg}
+                <sup>&deg; </sup>, {weather.wind.speed} mph
+              </span>
+            </p>
           </div>
         </div>
       )}
